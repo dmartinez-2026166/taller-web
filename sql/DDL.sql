@@ -1,12 +1,3 @@
--- =====================================================================
--- Base de datos de la versión WEB del taller.
--- Se puede ejecutar varias veces: NO borra datos existentes.
--- Los usuarios base (administrador y empleado) los crea la aplicación al
--- iniciar, con los datos de application.properties (contraseña con BCrypt).
--- =====================================================================
-create database if not exists sistema_taller_electromecanico;
-use sistema_taller_electromecanico;
-
 create table if not exists Usuario(
     nombre varchar(70) not null check(char_length(nombre) <= 70),
     usuario varchar(70) not null unique check(char_length(usuario) <= 70),
