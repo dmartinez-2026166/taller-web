@@ -34,8 +34,12 @@ public class UsuariosBaseInitializer implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        asegurar(properties.getAdministrador(), "ADMINISTRADOR");
-        asegurar(properties.getEmpleado(), "EMPLEADO");
+        try {
+            asegurar(properties.getAdministrador(), "ADMINISTRADOR");
+            asegurar(properties.getEmpleado(), "EMPLEADO");
+        } catch (Exception e) {
+            log.warn("No se pudieron inicializar los usuarios base en este arranque (es posible que las tablas se estén creando): {}", e.getMessage());
+        }
     }
 
     private void asegurar(UsuariosBaseProperties.Base base, String rol) {
