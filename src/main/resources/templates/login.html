@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Inicio de sesión</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body class="login-body">
+<main class="login-card">
+    <img th:src="@{/img/user-login.jpg}" alt="Usuario" class="login-img"/>
+    <h1 class="app-title">SERVIAUTOS MARDEL</h1>
+
+    <div class="alert alert-error" th:if="${param.error}">Usuario o contraseña incorrectos.</div>
+    <div class="alert alert-warn" th:if="${param.inactivo}">Su cuenta está inactiva. Comuníquese con el administrador.</div>
+    <div class="alert alert-ok" th:if="${param.logout}">Sesión cerrada correctamente.</div>
+
+    <form th:action="@{/login}" method="post" class="login-form">
+        <label for="username">INGRESE SU USUARIO</label>
+        <input type="text" id="username" name="username" required="required" autofocus="autofocus" autocomplete="username"/>
+        <label for="password">INGRESE SU CONTRASEÑA</label>
+        <input type="password" id="password" name="password" required="required" autocomplete="current-password"/>
+        <button type="submit" class="btn btn-primary btn-block">INICIAR SESIÓN</button>
+    </form>
+</main>
+</body>
+</html>
